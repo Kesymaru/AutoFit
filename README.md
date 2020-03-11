@@ -6,11 +6,14 @@ https://github.com/Microsoft/TypeScript-Node-Starter#project-structure
 Uses node.js with typescript, mongoDb in memory and mongoose.
 
 ## Config
-All the config are in .env files, make sure to have the .env file before running, change the .env included in the git for example 
+All the configs are in .env files, make sure to have the .env file before running, change the .env included in the git for example.
+
+## Install 
+`npm install`
 
 ### Example .env
 
-inside the repo .env
+Inside the repo .env
 
 ## Run
 `npm run-script build`
@@ -18,7 +21,8 @@ inside the repo .env
 `npm run start`
 
 ### Run development
-npm run-script dev
+
+`npm run-script dev`
 
 ### Test
 
