@@ -7,6 +7,7 @@ import csvtojson from "csvtojson";
 
 import HttpStatusCode from "./api.types";
 import Csv, { ICsvRow, columns, columnsTypes } from "./csv.model";
+import {camelCase} from "../util/utils";
 
 class ApiController {
   private readonly prefix: string = process.env["API_PREFIX"];
@@ -67,11 +68,11 @@ class ApiController {
     // extract wanted columns from csv data
     data = data.map(row =>
       Object.keys(row)
-        .filter(key => columns.includes(key.toLowerCase()))
+        .filter(key => columns.includes(camelCase(key))))
         .reduce(
           (total: any, key: string) => ({
             ...total,
-            [`${key.toLowerCase()}`]: row[key]
+            [`${camelCase(key)}`]: row[key]
           }),
           {}
         )

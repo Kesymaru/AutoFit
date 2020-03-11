@@ -8,9 +8,9 @@ export interface ICsvRow {
     mileage: string;
     year: string;
     price: string;
-    zip_code: string;
-    create_date: Date;
-    update_date: Date;
+    zipCode: string;
+    createDate: Date;
+    updateDate: Date;
 }
 
 export interface ICsv extends mongoose.Document{
@@ -25,9 +25,9 @@ export const columnsTypes: {[key: string]: any} = {
     "mileage": "string",
     "year": "number",
     "price": "number",
-    "zip_code": "string",
-    "create_date": "date",
-    "update_date": "date",
+    "zipCode": "string",
+    "createDate": "date",
+    "updateDate": "date",
 };
 
 export const columns = Object.keys(columnsTypes);

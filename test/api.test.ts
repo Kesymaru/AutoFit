@@ -1,7 +1,8 @@
 import request from "supertest";
 import app from "../src/app";
 
-const url = `'${process.env["API_PREFIX"]}'/csv`;
+// const url = `'${process.env["API_PREFIX"]}'/csv`;
+const url = "/api/v1/csv";
 
 describe(`Post ${url}`, () => {
   it("should return 400 when there ir no data", () => {
@@ -37,11 +38,6 @@ describe(`Post ${url}`, () => {
       .post(url)
       .field("provider", "Provider Test")
       .attach("csv", "./valid.csv")
-      .expect(201)
-      .end((err, res) => {
-          console.log("response", res);
-        expect(res.error).not.to.be.undefined;
-        done();
-      });
+      .expect(201);
   });
 });
