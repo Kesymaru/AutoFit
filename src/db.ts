@@ -5,6 +5,7 @@ import bluebird from "bluebird";
 mongoose.Promise = bluebird;
 
 const MongooseConfig: ConnectionOptions = {
+    dbName: "AutoFi",
     useNewUrlParser: true,
     useCreateIndex: true,
 };
