@@ -13,9 +13,8 @@ describe("GET /random-url", () => {
 
 describe("Connect to DB", () => {
   it("Should connect to MongoDB", done => {
-    return DB
-      .connect()
-      .then(done)
-      .catch((err: Error) => console.log("MongoDB connection error:", err));
+    return new DB().connect()
+      .then(() => done())
+      .catch(done);
   });
 });
