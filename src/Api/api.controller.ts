@@ -68,7 +68,7 @@ class ApiController {
     // extract wanted columns from csv data
     data = data.map(row =>
       Object.keys(row)
-        .filter(key => columns.includes(camelCase(key))))
+        .filter(key => columns.includes(camelCase(key)))
         .reduce(
           (total: any, key: string) => ({
             ...total,

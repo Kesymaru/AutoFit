@@ -42,9 +42,9 @@ const CsvSchema = new mongoose.Schema({
         mileage: {type: String, required: true},
         year: {type: Number, required: true},
         price: {type: Number, required: true},
-        zip_code: {type: String, required: true},
-        create_date: {type: Date, required: true},
-        update_date: {type: Date, required: true},
+        zipCode: {type: String, required: true},
+        createDate: {type: Date, required: true},
+        updateDate: {type: Date, required: true},
     }]
 }, { timestamps: true });
 
