@@ -7,7 +7,8 @@ Uses node.js with typescript, mongoDb in memory and mongoose.
 
 # Run
 npm run-script build
+
 npm run start
 
 ## Run development
-npm run-script watch
+npm run-script dev
