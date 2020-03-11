@@ -21,23 +21,24 @@ describe(`Post ${url}`, () => {
   it("should return 400 when Provider is missing", () => {
     return request(app)
       .post(url)
-      .attach("csv", "./test.csv")
+      .attach("csv", `${__dirname}/csv/valid.csv`)
       .expect(400);
   });
 
-  it("Should return 400 when CSV file is missing required columns", () => {
+  it("Should return 500 when CSV file is missing required columns", () => {
     return request(app)
       .post(url)
       .field("provider", "Provider Test")
-      .attach("csv", "./invalid.csv")
-      .expect(400);
+      .attach("csv", `${__dirname}/csv/invalid.csv`)
+      .expect(500);
   });
 
-  it("Should upload CSV file", (done) => {
+  it("Should upload CSV file", done => {
     return request(app)
       .post(url)
       .field("provider", "Provider Test")
-      .attach("csv", "./valid.csv")
-      .expect(201);
+      .attach("csv", `${__dirname}/csv/valid.csv`)
+      .expect(201)
+      .end((err, res) => err ? done(err) : done());
   });
 });
