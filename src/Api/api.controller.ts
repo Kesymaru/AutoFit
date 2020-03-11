@@ -7,10 +7,9 @@ import csvtojson from "csvtojson";
 
 import HttpStatusCode from "./api.types";
 import Csv, { ICsvRow, columns, columnsTypes } from "./csv.model";
-import {camelCase} from "../util/utils";
+import { camelCase } from "../util/utils";
 
 class ApiController {
-  private readonly prefix: string = process.env["API_PREFIX"];
   private readonly upload: any = multer({
     dest: path.join(os.tmpdir()),
     fileFilter: (
@@ -26,13 +25,14 @@ class ApiController {
    */
   constructor(app: Express) {
     app.post(
-      `${this.prefix}/csv`,
+      "/api/v1/csv",
       this.upload.single("csv"),
       this.Post.bind(this)
     );
   }
 
   public async Post(req: Request, res: Response, next: NextFunction) {
+    console.log("post csv");
     const file = req.file;
     const { provider } = req.body;
 
@@ -65,6 +65,8 @@ class ApiController {
   ) {
     let data = await csvtojson().fromFile(file.path);
 
+    console.log("json", data);
+
     // extract wanted columns from csv data
     data = data.map(row =>
       Object.keys(row)
@@ -77,6 +79,8 @@ class ApiController {
           {}
         )
     );
+
+    console.log("data", data);
 
     if (!data || !data.length)
       return res.status(HttpStatusCode.BAD_REQUEST).json({
