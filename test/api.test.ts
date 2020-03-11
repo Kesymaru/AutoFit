@@ -27,7 +27,7 @@ describe(`Post ${url}`, () => {
   it("Should return 400 when CSV file is missing required columns", () => {
     return request(app)
       .post(url)
-      .field("Provider Test")
+      .field("provider", "Provider Test")
       .attach("csv", "./invalid.csv")
       .expect(400);
   });
@@ -35,10 +35,11 @@ describe(`Post ${url}`, () => {
   it("Should upload CSV file", (done) => {
     return request(app)
       .post(url)
-      .field("Provider Test")
+      .field("provider", "Provider Test")
       .attach("csv", "./valid.csv")
       .expect(201)
       .end((err, res) => {
+          console.log("response", res);
         expect(res.error).not.to.be.undefined;
         done();
       });

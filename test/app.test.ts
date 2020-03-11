@@ -1,7 +1,7 @@
 import request from "supertest";
 
 import app from "../src/app";
-import DB from "./db";
+import DB from "../src/db";
 
 describe("GET /random-url", () => {
   it("should return 404", done => {
